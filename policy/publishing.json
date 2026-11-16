@@ -3,5 +3,21 @@
   "trusted_owner_ids": [],
   "revoked_owner_ids": [],
   "projects": [],
-  "external_projects": []
+  "external_projects": [
+    {
+      "project_id": "ext-mckda5u5zvhp",
+      "decision": "approved",
+      "content_digests": [
+        "7f30e84056ca7949f3b96861ee53b5991b3546424225886aa155cb179dfa1c84"
+      ],
+      "artwork_sets": [
+        [
+          {
+            "source_sha256": "aa6cf8110dd5c94e77dc4a33d74889ba4628b63f5c29e32db00959c657c9a72b",
+            "sha256": "1c7a178e3419661671f7c10359032585a737fdfc46687b39971f440da33f6454"
+          }
+        ]
+      ]
+    }
+  ]
 }
