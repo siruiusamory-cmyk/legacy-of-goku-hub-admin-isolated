@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "ext-mckda5u5zvhp",
+  "title": "LOG-HUB-013 isolated fictional resource",
+  "developer": "Isolated acceptance test",
+  "description": "Fictional administrator acceptance fixture for isolated resources only. Never publish to the production catalog. This description was revised after the correction request.",
+  "game": "multiple",
+  "category": "resource",
+  "status": "in-development",
+  "source": {
+    "type": "website",
+    "url": "https://example.org/loghub-013-fictional-isolated"
+  },
+  "cover": "cover.png",
+  "approved_at": "2026-11-16T17:24:48Z"
+}
