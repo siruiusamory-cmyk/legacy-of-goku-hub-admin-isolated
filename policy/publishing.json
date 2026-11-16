@@ -6,7 +6,7 @@
   "external_projects": [
     {
       "project_id": "ext-mckda5u5zvhp",
-      "decision": "approved",
+      "decision": "suspended",
       "content_digests": [
         "7f30e84056ca7949f3b96861ee53b5991b3546424225886aa155cb179dfa1c84"
       ],
@@ -17,7 +17,8 @@
             "sha256": "1c7a178e3419661671f7c10359032585a737fdfc46687b39971f440da33f6454"
           }
         ]
-      ]
+      ],
+      "reason": "Isolated administrator availability acceptance; never production."
     }
   ]
 }
