@@ -57,7 +57,7 @@ jobs:
           INTEGRATION_PHASE: ${{ inputs.phase }}
           INTEGRATION_ISSUE_NUMBER: ${{ inputs.issue_number }}
           EXPECTED_VERSION: ${{ inputs.expected_version }}
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: integration-ephemeral-state
           path: .integration/hosted/output/snapshot/
@@ -66,7 +66,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           BACKUP_TOKEN: ${{ steps.app.outputs.token }}
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: INTEGRATION-ONLY-verification
           path: .integration/hosted/report.json
