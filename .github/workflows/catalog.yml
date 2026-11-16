@@ -57,7 +57,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           SNAPSHOT_DIR: .previous
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: candidate
           include-hidden-files: true
@@ -100,7 +100,7 @@ jobs:
           BACKUP_TOKEN: ${{ steps.app.outputs.token }}
           BACKUP_SIGNING_KEY: ${{ secrets.BACKUP_SIGNING_KEY }}
           SOURCE_COMMIT: ${{ github.sha }}
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: backup-receipt
           path: .generated/backup-receipt.json
@@ -160,25 +160,25 @@ jobs:
           path: .generated
       - run: node src/backup-cli.js verify-publication
         env: *a6
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: catalog-state
           path: .generated/snapshot/
           retention-days: 30
           if-no-files-found: error
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: catalog
           path: .generated/work/dist/
           retention-days: 30
           if-no-files-found: error
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: validation-report
           path: .generated/report.json
           retention-days: 30
           if-no-files-found: error
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: protected-backup-receipt
           path: .generated/backup-receipt.json
@@ -281,7 +281,7 @@ jobs:
       - id: seal
         run: node tools/site/check-deployment.js seal .site/production "$GITHUB_SHA"
       - id: website-artifact
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: website
           path: .site/production/
