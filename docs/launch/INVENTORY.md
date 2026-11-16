@@ -1,0 +1,32 @@
+# Initial candidate inventory: none approved
+
+Refreshed through GitHub GET-only API reads on November 15, 2026. [Machine inventory](INVENTORY.json) records numeric identities, commit-pinned artwork URLs, source/normalized hashes and verified documentation links. [Drafts](candidates/) are proposals, not source manifests, policy or submissions. No issues were opened and no developer repositories changed.
+
+All four repositories are public, enabled, unarchived, default branch `master`, owner `siruiusamory-cmyk` (numeric ID `287528505`), GitHub license metadata MPL-2.0, no repository-root `.loghub.json`, and **zero GitHub releases**. Release fields remain null: no version, download button, asset count, download statistics or rating average is fabricated. GitHub repository descriptions and README statements were read, not independently proven by rebuilding or running project software.
+
+| Candidate / canonical repository | Identity / inspected revision | Proposed classification and status | Available artwork / submission readiness |
+| --- | --- | --- | --- |
+| [DragonByte Z / Webfoot SDK](https://github.com/siruiusamory-cmyk/dragonbyte-z) | `1429329775` / `bf7108ffc88fe089ec5b1f924abf4d06ab444514` | Multiple games; tool; in-development | No suitable cover. Only two obsolete editor PNGs found; excluded. [Incomplete JSON](candidates/dragonbyte-z.json), [guided draft](candidates/dragonbyte-z-guided.md). **BLOCKED**, intentionally fails required-cover validation. |
+| [Legacy of Goku Disassembly](https://github.com/siruiusamory-cmyk/legacyofgoku-disasm) | `1432341427` / `53daea5dce101411f42575d4efda0488273de3fb` | LoG I; resource; in-development | `docs/banner.png`, 1800×450; normalized 640×360 with proportional letterboxing. [JSON](candidates/legacyofgoku-disasm.json), [guided draft](candidates/legacyofgoku-disasm-guided.md). Structurally valid; human review pending. |
+| [Legacy of Goku II Disassembly](https://github.com/siruiusamory-cmyk/legacyofgoku2-disasm) | `1429374563` / `55363351468719fff9650cad45d81011da1f9438` | LoG II; resource; in-development | Same banner path/dimensions; [JSON](candidates/legacyofgoku2-disasm.json), [guided draft](candidates/legacyofgoku2-disasm-guided.md). Structurally valid; human review pending. |
+| [Buu's Fury Disassembly](https://github.com/siruiusamory-cmyk/buusfury-disasm) | `1398951057` / `91d367a9b81de83c80dc8da35f13db6b54696c80` | Buu's Fury; resource; in-development | Same banner path/dimensions; [JSON](candidates/buusfury-disasm.json), [guided draft](candidates/buusfury-disasm-guided.md). Structurally valid; human review pending. |
+
+DragonByte advanced from the previous inspection. Its current README says active development/pre-1.0, distinguishes the existing creator/SDK from a planned independent LOG1-first application, and describes broader goals as unfinished. The draft does not turn those goals into shipped features or claim runtime verification. No suitable new screenshot/cover was established by the refreshed image-tree inventory. No obsolete images were downloaded or reused.
+
+The disassembly revisions and banners are unchanged from prior owner inspection. Their READMEs describe assembly reconstruction and remaining naming/readability work. “Byte-exact” is attributed to the repositories' stated goal/build results, not a new Hub test. They are development resources, not downloadable playable ROM hacks or claims of original C recovery. No completion percentages are used. The proposed `in-development` status is an editorial classification of ongoing reconstruction work, requiring owner acceptance; absence of a release alone does not prove activity. Developer attribution is the repository controller, subject to team/credit review.
+
+Every candidate's README and `docs/README.md` exists at the inspected commit. Only those actual project documentation links are proposed. No Discord/community invite was found or invented. Source, submit and content-report paths point to this hub's actual GitHub repository and Issue Forms. Draft JSON uses immutable full-SHA banner URLs; guided drafts carry the same values and are not submitted. Future actual review must obtain fresh identity/content digests from the CLI; the recorded artwork hashes are inspection evidence, not preauthorized policy.
+
+## Owner decisions still required
+
+For each candidate: authorize submission and choose guided form (no upstream modification) or separately authorized manifest addition; accept exact title/developer/description/game/category/status/links; verify team authority and artwork provenance/rights; inspect the complete ordered image set; approve the fresh exact content digest and source/output artwork hashes through a distinct protected policy PR; authorize publication. Do not grant blanket owner trust. Decide featured placement or verified representation only if desired; neither is inferred here. Re-review if content, identity, release or artwork changes.
+
+For the three disassemblies, explicitly approve or decline their existing game-logo banners. Repository code license does not by itself license embedded game logos. Banner availability is not permission. No candidate becomes approved by copying these drafts into an intake form.
+
+## DragonByte Z cover requirements
+
+Owner must supply/select current project-representative artwork and confirm permission to use it. Do not reuse `public/dbz-layout-editor.png` or `public/dbz-map-browser.png`. Do not approve the neutral development-preview placeholder; it is not submission artwork. No artwork was generated.
+
+Accepted technical inputs: static PNG/JPEG/WebP, at most 5 MiB, 20 megapixels and 8192px per side; safe same-repository relative path resolved at a fixed commit, or same-repository `raw.githubusercontent.com` URL with a full 40-character commit SHA. Animated/corrupt inputs fail. Output is 640×360 WebP with aspect ratio preserved and letterboxing; a clear 16:9 source is recommended, not a new validation requirement. Keep text readable at card scale. Screenshots are optional (up to six); omit them until suitable current ones are explicitly selected. Each screenshot normalizes to 480×320 and joins the ordered approval set. The new image must exist in the project's repository before actual intake; this milestone grants no upstream write authorization.
+
+DragonByte is not required to hold back three independently approved resources: the owner may choose a smaller initial catalog or intentionally empty launch. Launching all four requires its missing cover plus all ordinary approvals.

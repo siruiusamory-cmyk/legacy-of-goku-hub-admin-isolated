@@ -1,0 +1,12 @@
+---
+import Ball from './Ball.astro';
+import {ratingsAPI} from '../lib/catalog.js';
+const {projectId} = Astro.props;
+---
+<div class="rating-selector" data-rating-selector={ratingsAPI ? projectId : undefined}><h2 class="panel-title" id="rating-selector-title">{ratingsAPI ? 'Your Rating' : 'Preview only · not saved'}</h2>
+<fieldset aria-labelledby="rating-selector-title" aria-describedby={ratingsAPI ? 'rating-instructions rating-status' : undefined}><div class="rating-options">{Array.from({length:7},(_,i)=><label class="rating-option"><input type="radio" disabled={!!ratingsAPI} name="rating-preview" autocomplete="off" value={i+1} aria-label={`${i+1} ${i === 0 ? 'Dragon Ball' : 'Dragon Balls'}`}/><span class="rating-choice"><Ball number={i+1}/></span></label>)}</div></fieldset>
+{ratingsAPI && <><p class="sr-only" id="rating-instructions">Select a Dragon Ball to save. Activate your selected Dragon Ball again to remove your rating.</p><p class="sr-only" role="status" aria-live="polite" id="rating-status" data-rating-status>Loading ratings...</p></>}
+</div>
+<script>
+ document.querySelectorAll('.rating-selector').forEach(selector=>{if(selector.hasAttribute('data-rating-selector'))return;window.addEventListener('pageshow',()=>selector.querySelectorAll('input').forEach(input=>{input.checked=false;}));});
+</script>

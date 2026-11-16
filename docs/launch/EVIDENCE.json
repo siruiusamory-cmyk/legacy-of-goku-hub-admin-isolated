@@ -1,0 +1,116 @@
+{
+  "observed_at": "2026-11-15T21:54:47.016Z",
+  "main": "8157622a08e71364dda986277dd27336ed27f91a",
+  "merged_prs": [
+    {
+      "number": 24,
+      "merged": true,
+      "merged_at": "2026-11-15T18:04:09Z",
+      "merge_commit_sha": "1122f040128225099e429799e96719129a299a8b",
+      "html_url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/pull/24"
+    },
+    {
+      "number": 25,
+      "merged": true,
+      "merged_at": "2026-11-15T18:13:39Z",
+      "merge_commit_sha": "27ad6c91d67c324d7d7545c7657b6a98d961f622",
+      "html_url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/pull/25"
+    },
+    {
+      "number": 26,
+      "merged": true,
+      "merged_at": "2026-11-15T18:15:15Z",
+      "merge_commit_sha": "b8ba6ac49e598ff1d5a086b80cf59c3e26740c9c",
+      "html_url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/pull/26"
+    },
+    {
+      "number": 27,
+      "merged": true,
+      "merged_at": "2026-11-15T18:16:56Z",
+      "merge_commit_sha": "b5ff0edc7cbc851f1bcfc400fad41b991f189e9e",
+      "html_url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/pull/27"
+    },
+    {
+      "number": 28,
+      "merged": true,
+      "merged_at": "2026-11-15T20:46:41Z",
+      "merge_commit_sha": "8157622a08e71364dda986277dd27336ed27f91a",
+      "html_url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/pull/28"
+    }
+  ],
+  "checks": [
+    {
+      "id": 43759963474,
+      "head_sha": "8157622a08e71364dda986277dd27336ed27f91a",
+      "conclusion": "success",
+      "url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/actions/runs/43759963474"
+    },
+    {
+      "id": 43759963470,
+      "head_sha": "8157622a08e71364dda986277dd27336ed27f91a",
+      "conclusion": "success",
+      "url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/actions/runs/43759963470"
+    },
+    {
+      "id": 43747740588,
+      "head_sha": "a0b19e8e2a1989ef2c630f926789db07d4f7c16c",
+      "conclusion": "success",
+      "url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/actions/runs/43747740588"
+    }
+  ],
+  "protection": {
+    "required_contexts": [
+      "test"
+    ],
+    "strict": true,
+    "enforce_admins": true,
+    "required_approving_reviews": 0,
+    "require_code_owner_reviews": false
+  },
+  "variables": [
+    {
+      "name": "BACKUP_APP_ID",
+      "value": "5764581"
+    },
+    {
+      "name": "PUBLISHING_ENABLED",
+      "value": "true"
+    }
+  ],
+  "pages": {
+    "status": 404
+  },
+  "recovery": {
+    "point": "43660443880-5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+    "commit": "4cadd39f4b7d4a5706c71c15593b94dec63f2adc",
+    "snapshot_id": "5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+    "signature_verified": true,
+    "projects": 0,
+    "registry": 0,
+    "health": {
+      "point": "43660443880-5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+      "snapshot_id": "5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+      "verified_publication_run": 43759963470,
+      "age_hours": 1.0998980555555555
+    },
+    "points": [
+      {
+        "point": "43660443880-5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+        "commit": "4cadd39f4b7d4a5706c71c15593b94dec63f2adc",
+        "run_id": 43660443880,
+        "anchor_source_commit": "05943086e001ea08da8acc496f82394d991a9c34"
+      }
+    ]
+  },
+  "policy_hashes": {
+    "publishing": "477a85938a81dc3cfabb2ab82dfb912083f958a6c407bc8ba9707b91d6b7e22b",
+    "recovery": "2da789ad951a1fe97312fbf72330c26e040d6bae85acfd727392ce8c53cc0049"
+  },
+  "acceptance": {
+    "revision": "8157622a08e71364dda986277dd27336ed27f91a",
+    "passed": 26,
+    "scope": "local isolated fixture lifecycle; real CLI/image/catalog/site/signatures; no hosted human approval lifecycle",
+    "zeroshot_run": "01a1e0ff-c551-7741-b6a7-980c5cfb4cb3",
+    "verdict": "PASS"
+  }
+}

@@ -1,0 +1,23 @@
+# Independent final source review
+
+Run: 01a1dc8b-780a-77f1-8c65-6d9dddac173b. Raw typed report from the development-only review; coordinator runtime evidence is recorded separately.
+
+Verdict: no remaining confirmed findings in reviewed changes. This is a scoped, independent source-review verdict, not runtime certification or a verdict inferred from ZeroShot completion.
+
+I inspected the actual candidate files and connected intake, identity, catalog, policy-schema and workflow code. The four repairs are consistent with their regressions:
+
+1. Unauthorized manifest pointer: src/publishing.js:98–105 selects authorized candidates and checks only authorized manifest requests when deciding whether a missing manifest must freeze publication. A stranger's pointer cannot block the owner's guided update. tests/self-service.test.js:199–206 checks both the updated title and available status.
+
+2. Feedback failure and interrupted publication: src/service-cli.js:14–25 searches completed workflow runs, validates repository/default-branch/workflow/event provenance, then requires a successful publish job and both unexpired catalog-state and catalog artifacts. Whole-workflow failure caused by feedback does not exclude that publication. A failed/interrupted publish job is skipped before artifact selection; missing artifacts from an otherwise successful publisher fail closed. Corresponding regressions are at tests/self-service.test.js:217–235; provenance and expiry coverage starts at line 181.
+
+3. Deleted newest guided issue: src/publishing.js:106–112 retains the prior snapshot when no authorized source remains or the selected issue predates the published guided source. It therefore cannot silently replay an older title. tests/self-service.test.js:208–215 checks retained metadata and unavailable status.
+
+4. Legacy migration outage: src/publishing.js:63–66 requires explicit numeric policy approval, rejects a conflicting existing owner ID, and binds the approved owner ID into both registration and retained state before API access. This satisfies the identity equality enforced by readSnapshot at line 28 even when the initial API request fails. tests/self-service.test.js:244–257 creates a legacy state without owner_id, checks snapshot readability after HTTP 503, and checks subsequent recovery.
+
+Authority and revocation checks: src/publishing.js:39–40 grants ongoing guided control only to the numeric personal repository owner or policy-listed representatives. Exact issue/digest approval permits specific third-party content without granting ongoing control; publication remains unclaimed (lines 98, 117–131). Manifest discovery establishes repository control independently of the pointer author's identity. Team representation requires the administrator-owned policy flag. Transfers require numeric new-owner approval (lines 90–92). Removing trusted status prevents new automatic admission while existing publications remain approved; explicit revocation or project review freezes updates, and suspension/delisting removes public visibility while preserving recovery state (lines 88–93, 118, 140–154).
+
+.github/workflows/catalog.yml:18–21 gives the routine publisher only contents/read, issues/read and actions/read. Feedback issue-write permission is isolated in the separate job at lines 66–72. No routine contents-write publisher was found.
+
+Validation limits: I did not execute tests, install dependencies, or run candidate code. Coordinator-reported failures-before/passes-after remain coordinator evidence. The read-only filesystem prevents installation, and C:/Users/hears/.agents/skills/security-audit/SKILL.md requires: 'If every control cannot be enforced, do not execute target code.' The available environment does not establish the required empty allowlisted environment, scratch-only writes and resource limits. No controls were weakened; no source/global settings were edited, commits made, deployment performed, or others contacted.
+
+Fresh-reviewer setup: checkout C:/Users/hears/log-hub-pipeline; existing ignored dependencies are under its node_modules directory. Installed package metadata matches the manifest pins: ajv 8.20.0, sharp 0.35.5, yaml 2.9.1. Node is C:/Program Files/nodejs/node.exe, version metadata 24.16.0. These observations do not establish a fresh successful installation or native-binary load. In a suitably isolated writable environment, use the committed package-lock.json with npm ci --ignore-scripts, wait for exit status zero, then run npm test under the required controls. That is an unrun validation procedure, not a confirmed defect. No standalone tools were installed.

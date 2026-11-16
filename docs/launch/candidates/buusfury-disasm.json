@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "title": "Buu's Fury Disassembly",
+  "developer": "siruiusamory-cmyk",
+  "description": "Byte-exact disassembly of Dragon Ball Z: Buu's Fury (GBA, USA). Code is ARM/Thumb assembly; assets rebuild from your own ROM. No game data included. This is an assembly reconstruction and development resource, not a playable ROM hack or a recovery of the original C source. Rebuilding requires the owner's own supported retail ROM and the documented toolchain. The README describes remaining reconstruction and readability work; no completion percentage or independently tested runtime claim is asserted here.",
+  "game": "buus-fury",
+  "category": "resource",
+  "status": "in-development",
+  "cover": "https://raw.githubusercontent.com/siruiusamory-cmyk/buusfury-disasm/91d367a9b81de83c80dc8da35f13db6b54696c80/docs/banner.png",
+  "screenshots": [],
+  "links": [
+    {
+      "label": "Repository README",
+      "url": "https://github.com/siruiusamory-cmyk/buusfury-disasm/blob/master/README.md"
+    },
+    {
+      "label": "Documentation",
+      "url": "https://github.com/siruiusamory-cmyk/buusfury-disasm/blob/master/docs/README.md"
+    }
+  ]
+}

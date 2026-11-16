@@ -1,0 +1,5 @@
+---
+import {names} from '../lib/catalog.js';
+const {project, status = true} = Astro.props;
+---
+<div class="badges"><span class="badge game">{names[project.game]}</span><span class="badge category">{names[project.category]}</span>{status && <span class:list={['badge', project.status]}>{names[project.status]}</span>}</div>

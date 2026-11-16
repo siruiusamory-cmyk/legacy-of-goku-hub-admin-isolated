@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "title": "Template only — replace this title",
+  "developer": "Replace with your developer or team attribution",
+  "description": "Replace this template with a factual description of your own project, at least 20 characters.",
+  "game": "legacy-of-goku-2",
+  "category": "rom-hack",
+  "status": "in-development",
+  "cover": "images/cover.png",
+  "screenshots": []
+}

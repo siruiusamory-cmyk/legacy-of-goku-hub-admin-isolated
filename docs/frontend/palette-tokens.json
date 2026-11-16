@@ -1,0 +1,89 @@
+{
+  "palettes": {
+    "bg": {
+      "sha256": "cd5596d2b5077a70f0e7d40aa59a59978438003270004f7da5326192061b9790",
+      "count": 256
+    },
+    "obj": {
+      "sha256": "47fc3a9b0e9987f5293e57420d0178ea60240c52628f1debf1c2097fbac8ddbe",
+      "count": 256
+    }
+  },
+  "tokens": {
+    "ink": {
+      "palette": "bg",
+      "index": 0,
+      "hex": "#000000"
+    },
+    "navy": {
+      "palette": "obj",
+      "index": 211,
+      "hex": "#202040"
+    },
+    "charcoal": {
+      "palette": "bg",
+      "index": 14,
+      "hex": "#282828"
+    },
+    "paper": {
+      "palette": "bg",
+      "index": 2,
+      "hex": "#f8f8f8"
+    },
+    "muted": {
+      "palette": "bg",
+      "index": 10,
+      "hex": "#b8b8b8"
+    },
+    "gold": {
+      "palette": "obj",
+      "index": 37,
+      "hex": "#f8d040"
+    },
+    "orange": {
+      "palette": "obj",
+      "index": 39,
+      "hex": "#f89018"
+    },
+    "orange-soft": {
+      "palette": "bg",
+      "index": 23,
+      "hex": "#f8a858"
+    },
+    "blue": {
+      "palette": "obj",
+      "index": 70,
+      "hex": "#0068f8"
+    },
+    "blue-deep": {
+      "palette": "bg",
+      "index": 105,
+      "hex": "#2060a8"
+    },
+    "ice": {
+      "palette": "bg",
+      "index": 73,
+      "hex": "#90c8f8"
+    },
+    "teal": {
+      "palette": "bg",
+      "index": 69,
+      "hex": "#00c8c8"
+    },
+    "green": {
+      "palette": "obj",
+      "index": 61,
+      "hex": "#58f870"
+    },
+    "violet": {
+      "palette": "obj",
+      "index": 83,
+      "hex": "#9880f8"
+    },
+    "red": {
+      "palette": "obj",
+      "index": 25,
+      "hex": "#d01028"
+    }
+  }
+}

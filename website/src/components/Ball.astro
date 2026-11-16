@@ -1,0 +1,6 @@
+---
+import {starLayouts, starPolygon} from '../lib/dragon-balls.js';
+const {number = 4, muted = false} = Astro.props;
+const polygon = starPolygon(number);
+---
+<span class:list={['dragon-ball', {muted}]} data-ball={number} aria-hidden="true"><svg class="ball-stars" viewBox="0 0 100 100" aria-hidden="true">{starLayouts[number].map(([x,y]) => <polygon points={polygon} transform={`translate(${x} ${y})`}/>)}</svg></span>

@@ -1,0 +1,13 @@
+---
+import PortraitFrame from './PortraitFrame.astro';
+const {framed = false, src, width = 640, height = 360, alt = '', class: className = '', loading = 'lazy', fetchpriority} = Astro.props;
+---
+<span class:list={['project-artwork',className]}><img src={src} alt={alt} width={width} height={height} loading={loading} fetchpriority={fetchpriority} decoding="async"/><span class="artwork-unavailable" hidden><span aria-hidden="true">◇</span>Project artwork unavailable</span>{framed && <PortraitFrame/>}</span>
+<script>
+  document.querySelectorAll('.project-artwork').forEach(frame=>{
+    const image=frame.querySelector('img');
+    const unavailable=()=>{image.hidden=true;frame.querySelector('.artwork-unavailable').hidden=false;};
+    image.addEventListener('error',unavailable,{once:true});
+    if(image.complete && !image.naturalWidth) unavailable();
+  });
+</script>

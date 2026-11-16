@@ -1,0 +1,100 @@
+name: Submit, update or claim a project
+description: Guided fields; no JSON editing. Third-party submissions require review.
+title: '[Submission] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Releases and downloads come from GitHub automatically. Images can use repository-relative
+        paths (images/cover.png) or immutable raw.githubusercontent.com URLs in this repository.
+        Cover output is 640×360; screenshots are 480×320, letterboxed without distortion.
+        Inputs: static PNG/JPEG/WebP, <=5 MiB, <=20 MP, <=8192px per side.
+        Claims are verified against GitHub numeric IDs, not this form's declarations.
+        Repository control does not establish authority to represent the whole team.
+        Every first listing and all new or changed artwork require human approval, even for trusted owners.
+        Do not embed or attach candidate images here; use paths/URLs. See docs/moderation.md.
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/OWNER/REPO
+    validations:
+      required: true
+  - type: dropdown
+    id: method
+    attributes:
+      label: Submission method
+      options: [Guided form]
+    validations:
+      required: true
+  - type: dropdown
+    id: request
+    attributes:
+      label: Request
+      options: [Submit or update, Claim ownership, Report ownership dispute]
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Project title
+      description: Up to 100 characters.
+    validations:
+      required: true
+  - type: input
+    id: developer
+    attributes:
+      label: Developer or team
+      description: Attribution, up to 100 characters. This does not grant edit authority.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: 20–2000 characters of plain text.
+    validations:
+      required: true
+  - type: dropdown
+    id: game
+    attributes:
+      label: Base game
+      options: [legacy-of-goku, legacy-of-goku-2, buus-fury, multiple]
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options: [rom-hack, fan-project, tool, resource]
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Development status
+      options: [in-development, released, on-hold, discontinued]
+    validations:
+      required: true
+  - type: input
+    id: cover
+    attributes:
+      label: Cover image
+      placeholder: images/cover.png
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Optional, up to 6 paths or pinned raw URLs, one per line.
+  - type: textarea
+    id: links
+    attributes:
+      label: Project links
+      description: Optional. One Label https://URL per line; see allowed hosts in README. Never download or ROM links.
+  - type: input
+    id: asset
+    attributes:
+      label: Release asset filename
+      description: Optional exact filename; required when a release contains multiple supported downloads.

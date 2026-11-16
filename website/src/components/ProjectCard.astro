@@ -1,0 +1,16 @@
+---
+import {href, projectURL, rating, projectActions} from '../lib/catalog.js';
+import Badges from './Badges.astro';
+import Rating from './Rating.astro';
+import Icon from './Icon.astro';
+import ProjectArtwork from './ProjectArtwork.astro';
+const {project} = Astro.props;
+const actions = projectActions(project);
+---
+<article class="project-card" data-id={project.id} data-search={project.search_text} data-game={project.game} data-category={project.category} data-status={project.status} data-name={project.title.toLowerCase()} data-release={project.release?.release_date || ''} data-updated={project.last_updated}>
+  <a class="card-art" href={projectURL(project)} tabindex="-1" aria-hidden="true"><ProjectArtwork src={href(project.cover)}/></a>
+  <div class="card-content"><h3><a href={projectURL(project)}>{project.title}</a></h3><p class="developer">by {project.developer}</p>
+    <div class="card-meta"><Badges project={project}/><div class="card-actions">{actions.map(a => <a class="icon-button" href={a.url} aria-label={a.aria} rel="noopener noreferrer"><Icon name={a.id === 'download' || a.id === 'distribution' ? 'download' : a.cardIcon}/></a>)}</div></div>
+    <Rating {...rating(project)} projectId={project.id} compact/>
+  </div>
+</article>

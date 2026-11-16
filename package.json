@@ -1,0 +1,37 @@
+{
+  "name": "log-hub-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test",
+    "validate": "node src/cli.js validate",
+    "build": "node src/cli.js build",
+    "refresh": "node src/cli.js refresh",
+    "publish:local": "node src/service-cli.js publish",
+    "backup": "node src/backup-cli.js backup",
+    "restore": "node src/backup-cli.js restore",
+    "backup:health": "node src/backup-cli.js health",
+    "site:fixture": "node tools/site/build.js --fixture",
+    "site:build": "node tools/site/build.js",
+    "site:serve": "node tools/site/serve.js",
+    "test:browser": "playwright test",
+    "test:site": "node --test tests/site/*.test.js",
+    "site:real:ingest": "node tools/site/real-repositories.js --live",
+    "site:real": "node tools/site/build.js --real-preview .review/004a/real-input",
+    "test:real": "playwright test --config playwright.real.config.js"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.65.1",
+    "astro": "7.4.12",
+    "yaml": "2.9.1"
+  }
+}

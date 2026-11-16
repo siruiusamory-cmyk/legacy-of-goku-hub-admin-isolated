@@ -1,0 +1,45 @@
+{
+  "observed_at": "2026-11-15T22:19:16.393Z",
+  "main_unchanged": "8157622a08e71364dda986277dd27336ed27f91a",
+  "variables_unchanged": true,
+  "pages_disabled": true,
+  "protection_unchanged": true,
+  "policy_hashes_unchanged": true,
+  "recovery_point_unchanged": "43660443880-5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+  "recovery_commit_unchanged": "4cadd39f4b7d4a5706c71c15593b94dec63f2adc",
+  "recovery_history_unchanged": true,
+  "catalog_count": 0,
+  "rating_disclosure_pr": {
+    "url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/pull/29",
+    "state": "open",
+    "head": "0d9604c6bacc2df2320b2fc1c08885ff45bac591",
+    "checks": [
+      {
+        "name": "test",
+        "conclusion": "success",
+        "url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/actions/runs/43766467857/job/132972584228"
+      },
+      {
+        "name": "browser",
+        "conclusion": "success",
+        "url": "https://github.com/siruiusamory-cmyk/legacy-of-goku-hub/actions/runs/43766467852/job/132972584165"
+      }
+    ]
+  },
+  "local_smoke": {
+    "status": "PASS",
+    "base": "/legacy-of-goku-hub/",
+    "widths": [
+      320,
+      1448
+    ],
+    "projects": 0,
+    "failed_resources": [],
+    "provenance": {
+      "purpose": "production",
+      "point": "43660443880-5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+      "snapshot_id": "5d7105d4766b64b37ec52f33f5e25c743769592f1e7cebfcde67a62d8d59b711",
+      "source_commit": "05943086e001ea08da8acc496f82394d991a9c34"
+    }
+  }
+}

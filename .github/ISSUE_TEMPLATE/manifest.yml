@@ -1,0 +1,26 @@
+name: Register repository manifest
+description: Add .loghub.json to your repository, then submit only its URL.
+title: '[Manifest] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The bot reads .loghub.json from the default branch. Anyone may point to it;
+        this does not give the submitter ownership of the listing.
+        Every first listing needs human content approval, including trusted owners.
+        Later updates synchronize daily; all new or changed artwork waits for exact-content approval.
+        Do not embed or attach candidate images here. Supply repository paths only; see docs/moderation.md.
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/OWNER/REPO
+    validations:
+      required: true
+  - type: dropdown
+    id: method
+    attributes:
+      label: Submission method
+      options: [Repository manifest]
+    validations:
+      required: true

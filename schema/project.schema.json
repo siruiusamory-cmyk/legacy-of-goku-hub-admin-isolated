@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Editorial project record; release fields are generated",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "developer", "description", "game", "category", "status", "repository", "cover"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "title": {"type": "string", "minLength": 1, "maxLength": 100},
+    "developer": {"type": "string", "minLength": 1, "maxLength": 100},
+    "description": {"type": "string", "minLength": 20, "maxLength": 2000},
+    "game": {"enum": ["legacy-of-goku", "legacy-of-goku-2", "buus-fury", "multiple"]},
+    "category": {"enum": ["rom-hack", "fan-project", "tool", "resource"]},
+    "status": {"enum": ["in-development", "released", "on-hold", "discontinued"]},
+    "repository": {"type": "string", "maxLength": 200},
+    "cover": {"type": "string", "minLength": 1, "maxLength": 500},
+    "screenshots": {"type": "array", "maxItems": 6, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "asset_name": {"type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "featured": {"type": "boolean"},
+    "links": {"type": "array", "maxItems": 6, "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["label", "url"], "properties": {"label": {"type": "string", "minLength": 1, "maxLength": 32}, "url": {"type": "string", "maxLength": 500}}}}
+  }
+}

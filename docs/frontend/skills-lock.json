@@ -1,0 +1,22 @@
+[
+  {
+    "repo": "Leonxlnx/imagegen-skills",
+    "path": "skills/image-to-code",
+    "ref": "beb16b0d0f4dae9a6f5cb04ea41e97b93a54ab8e"
+  },
+  {
+    "repo": "anthropics/skills",
+    "path": "skills/frontend-design",
+    "ref": "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064"
+  },
+  {
+    "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+    "path": ".claude/skills/ui-ux-pro-max",
+    "ref": "d643997c82e94742dd3bee43210b0198e8bbba3d"
+  },
+  {
+    "repo": "vercel-labs/agent-skills",
+    "path": "skills/web-design-guidelines",
+    "ref": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62"
+  }
+]

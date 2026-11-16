@@ -1,0 +1,88 @@
+{
+  "commit": "fc8752ee08cff43545c25ccd755db561fec6a630",
+  "scanned_files": 1474,
+  "skipped_files": [],
+  "literal_references": [
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/docs/ROM_SAFETY.md",
+      "term": "dbz-layout-editor",
+      "lines": [
+        95
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/docs/ROM_SAFETY.md",
+      "term": "dbz-map-browser",
+      "lines": [
+        94
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/docs/decisions/0006-public-product-screenshots.md",
+      "term": "dbz-layout-editor",
+      "lines": [
+        6,
+        33,
+        48
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/docs/decisions/0006-public-product-screenshots.md",
+      "term": "dbz-map-browser",
+      "lines": [
+        6,
+        32
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/docs/history/README-before-repository-cleanup.md",
+      "term": "dbz-layout-editor",
+      "lines": [
+        244
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/docs/history/README-before-repository-cleanup.md",
+      "term": "dbz-map-browser",
+      "lines": [
+        239
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/docs/source-classification.md",
+      "term": "dbz-map-browser",
+      "lines": [
+        46
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/src/data/project.ts",
+      "term": "dbz-layout-editor",
+      "lines": [
+        1232
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/src/data/project.ts",
+      "term": "dbz-map-browser",
+      "lines": [
+        1213
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/src/layouts/BaseLayout.astro",
+      "term": "dbz-map-browser",
+      "lines": [
+        21
+      ]
+    },
+    {
+      "path": "dragonbyte-z-fc8752ee08cff43545c25ccd755db561fec6a630/tests/unit/test_ci_tier.py",
+      "term": "dbz-map-browser",
+      "lines": [
+        13
+      ]
+    }
+  ],
+  "remote_changes": false
+}

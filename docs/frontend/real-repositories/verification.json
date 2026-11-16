@@ -1,0 +1,150 @@
+{
+  "read_only_github": true,
+  "remote_writes": 0,
+  "live_owner": {
+    "id": 287528505,
+    "login": "siruiusamory-cmyk"
+  },
+  "projects": [
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/dragonbyte-z",
+      "repository_id": 1429329775,
+      "owner_id": 287528505,
+      "default_branch": "master",
+      "commit": "fc8752ee08cff43545c25ccd755db561fec6a630",
+      "release": null,
+      "manifest_discovery": "absent",
+      "guided_source": "local form event; no hosted issue created",
+      "manifest_proposal_valid": false,
+      "production_approved": false,
+      "artwork": {
+        "placeholder": true,
+        "reason": "No current suitable artwork established"
+      }
+    },
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/legacyofgoku-disasm",
+      "repository_id": 1432341427,
+      "owner_id": 287528505,
+      "default_branch": "master",
+      "commit": "53daea5dce101411f42575d4efda0488273de3fb",
+      "release": null,
+      "manifest_discovery": "absent",
+      "guided_source": "local form event; no hosted issue created",
+      "manifest_proposal_valid": true,
+      "production_approved": false,
+      "artwork": {
+        "path": "docs/banner.png",
+        "source_dimensions": [
+          1800,
+          450
+        ],
+        "normalized_dimensions": [
+          640,
+          360
+        ]
+      }
+    },
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/legacyofgoku2-disasm",
+      "repository_id": 1429374563,
+      "owner_id": 287528505,
+      "default_branch": "master",
+      "commit": "55363351468719fff9650cad45d81011da1f9438",
+      "release": null,
+      "manifest_discovery": "absent",
+      "guided_source": "local form event; no hosted issue created",
+      "manifest_proposal_valid": true,
+      "production_approved": false,
+      "artwork": {
+        "path": "docs/banner.png",
+        "source_dimensions": [
+          1800,
+          450
+        ],
+        "normalized_dimensions": [
+          640,
+          360
+        ]
+      }
+    },
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/buusfury-disasm",
+      "repository_id": 1398951057,
+      "owner_id": 287528505,
+      "default_branch": "master",
+      "commit": "91d367a9b81de83c80dc8da35f13db6b54696c80",
+      "release": null,
+      "manifest_discovery": "absent",
+      "guided_source": "local form event; no hosted issue created",
+      "manifest_proposal_valid": true,
+      "production_approved": false,
+      "artwork": {
+        "path": "docs/banner.png",
+        "source_dimensions": [
+          1800,
+          450
+        ],
+        "normalized_dimensions": [
+          640,
+          360
+        ]
+      }
+    }
+  ],
+  "blocked": [
+    {
+      "repository_id": 1429329775,
+      "reason": "Current approved repository cover art required; neutral preview placeholder is not submission-ready artwork."
+    }
+  ],
+  "untrusted_submission_report": [
+    {
+      "repository_id": 1398951057,
+      "issues": [
+        4
+      ],
+      "outcome": "review",
+      "reason": "new/untrusted or third-party project: validated mechanically; administrator review required before first publication",
+      "owner_id": 287528505,
+      "submission_digest": "a89916d183706fc9966f0954e5d46bdac74c452e4f8086472d030f192e9a585d"
+    },
+    {
+      "repository_id": 1429329775,
+      "issues": [
+        1
+      ],
+      "outcome": "review",
+      "reason": "manifest: /cover must NOT have fewer than 1 characters",
+      "owner_id": 287528505,
+      "submission_digest": "311c2fb5898f49dc9562f8796035dfe10fdb81fff78f5a830549c4d1240fd981"
+    },
+    {
+      "repository_id": 1429374563,
+      "issues": [
+        3
+      ],
+      "outcome": "review",
+      "reason": "new/untrusted or third-party project: validated mechanically; administrator review required before first publication",
+      "owner_id": 287528505,
+      "submission_digest": "9a77cda90c95cf9dad880dad5c5138c10f33759833265d00d382e6c2dc401a98"
+    },
+    {
+      "repository_id": 1432341427,
+      "issues": [
+        2
+      ],
+      "outcome": "review",
+      "reason": "new/untrusted or third-party project: validated mechanically; administrator review required before first publication",
+      "owner_id": 287528505,
+      "submission_digest": "189ca74ed8273e2f4638a514819def39168fe0ee9ba1480c4c154f2043d81be7"
+    }
+  ],
+  "production_catalog_unchanged": true,
+  "artwork_requests": [
+    "https://raw.githubusercontent.com/siruiusamory-cmyk/buusfury-disasm/91d367a9b81de83c80dc8da35f13db6b54696c80/docs/banner.png",
+    "https://raw.githubusercontent.com/siruiusamory-cmyk/legacyofgoku2-disasm/55363351468719fff9650cad45d81011da1f9438/docs/banner.png",
+    "https://raw.githubusercontent.com/siruiusamory-cmyk/legacyofgoku-disasm/53daea5dce101411f42575d4efda0488273de3fb/docs/banner.png"
+  ],
+  "obsolete_artwork_requests": 0
+}

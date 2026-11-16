@@ -1,0 +1,53 @@
+name: Private administrator preparation
+on:
+  workflow_dispatch:
+    inputs:
+      review:
+        description: Opaque private review identifier
+        required: true
+        type: string
+      action:
+        required: true
+        type: choice
+        options: [prepare, publish]
+permissions: {}
+concurrency:
+  group: admin-review-${{ inputs.review }}
+  cancel-in-progress: false
+jobs:
+  review:
+    if: vars.ADMIN_PROCESSING_ENABLED == 'true' && github.ref == 'refs/heads/main' && github.ref_protected
+    environment: admin-processing
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - id: publisher
+        if: inputs.action == 'publish'
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        with:
+          app-id: ${{ vars.ADMIN_PUBLISH_APP_ID }}
+          private-key: ${{ secrets.ADMIN_PUBLISH_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: legacy-of-goku-hub-admin-isolated
+          permission-contents: write
+          permission-pull-requests: write
+      - name: Process privately; no submission artifacts or log output
+        run: node tools/admin/process.js
+        env:
+          GH_TOKEN: ${{ steps.publisher.outputs.token || github.token }}
+          ADMIN_API: ${{ vars.ADMIN_API }}
+          ADMIN_PROCESSOR_TOKEN: ${{ secrets.ADMIN_PROCESSOR_TOKEN }}
+          ACCESS_CLIENT_ID: ${{ secrets.ADMIN_ACCESS_CLIENT_ID }}
+          ACCESS_CLIENT_SECRET: ${{ secrets.ADMIN_ACCESS_CLIENT_SECRET }}
+          REVIEW_ID: ${{ inputs.review }}
+          REVIEW_ACTION: ${{ inputs.action }}

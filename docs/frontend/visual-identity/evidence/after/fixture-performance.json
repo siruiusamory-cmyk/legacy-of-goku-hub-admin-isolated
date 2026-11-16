@@ -1,0 +1,42 @@
+[
+  {
+    "name": "homepage-desktop",
+    "domContentLoaded": 42.5,
+    "resources": 15,
+    "transferred": 271153,
+    "scriptBytes": 2022,
+    "external": []
+  },
+  {
+    "name": "detail-desktop",
+    "domContentLoaded": 58.19999998807907,
+    "resources": 12,
+    "transferred": 197368,
+    "scriptBytes": 1291,
+    "external": []
+  },
+  {
+    "name": "homepage-mobile",
+    "domContentLoaded": 53.59999996423721,
+    "resources": 15,
+    "transferred": 271153,
+    "scriptBytes": 2022,
+    "external": []
+  },
+  {
+    "name": "detail-mobile",
+    "domContentLoaded": 57.69999998807907,
+    "resources": 12,
+    "transferred": 197368,
+    "scriptBytes": 1291,
+    "external": []
+  },
+  {
+    "name": "empty-desktop",
+    "domContentLoaded": 85.5,
+    "resources": 7,
+    "transferred": 155972,
+    "scriptBytes": 1490,
+    "external": []
+  }
+]

@@ -1,0 +1,74 @@
+name: Hosted isolated integration
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: Isolated fixture scenario, never production
+        required: true
+        type: choice
+        options: [manifest-first, manifest-update, guided-first, guided-update]
+      issue_number:
+        description: Owner-authored integration fixture issue
+        required: true
+        type: string
+      expected_version:
+        description: Expected live GitHub fixture release tag
+        required: true
+        type: string
+permissions: {}
+concurrency:
+  group: isolated-hosted-integration
+  cancel-in-progress: false
+jobs:
+  integration:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    permissions:
+      contents: write
+      issues: write
+      actions: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - id: config
+        run: node src/backup-cli.js config
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - id: app
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        with:
+          app-id: ${{ vars.BACKUP_APP_ID }}
+          private-key: ${{ secrets.BACKUP_APP_PRIVATE_KEY }}
+          owner: ${{ steps.config.outputs.owner }}
+          repositories: ${{ steps.config.outputs.repository }}
+          permission-contents: write
+      - run: node tools/hosted-integration.js exercise
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_TOKEN: ${{ steps.app.outputs.token }}
+          INTEGRATION_SIGNING_KEY: ${{ secrets.INTEGRATION_SIGNING_KEY }}
+          INTEGRATION_PHASE: ${{ inputs.phase }}
+          INTEGRATION_ISSUE_NUMBER: ${{ inputs.issue_number }}
+          EXPECTED_VERSION: ${{ inputs.expected_version }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: integration-ephemeral-state
+          path: .integration/hosted/output/snapshot/
+          retention-days: 1
+      - run: node tools/hosted-integration.js after-artifact-loss
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_TOKEN: ${{ steps.app.outputs.token }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: INTEGRATION-ONLY-verification
+          path: .integration/hosted/report.json
+          retention-days: 30
+          if-no-files-found: error

@@ -1,0 +1,11 @@
+---
+import Ball from './Ball.astro';
+import {ratingsAPI} from '../lib/catalog.js';
+const {average = null, count = 0, compact = false, projectId, ballsOnly = false} = Astro.props;
+const rated = Number.isFinite(average) && average >= 1 && average <= 7 && Number.isInteger(count) && count > 0;
+---
+<div class:list={['rating-display', {compact}]} data-ratings-project={ratingsAPI ? projectId : undefined} aria-label={ratingsAPI ? 'Community ratings loading' : rated ? `Community rating: ${average.toFixed(1)} out of 7, ${count} ratings` : 'Community rating: not rated yet'}>
+  <span class="rating-label">Community Rating</span>
+  <span class="rating-balls">{Array.from({length: 7}, (_,i) => <Ball number={i+1} muted={!rated || i >= Math.round(average)}/>)}</span>
+  <span class:list={['rating-value', {'sr-only': ballsOnly}]}>{ratingsAPI ? 'Loading ratings…' : rated ? <><strong>{average.toFixed(1)} <span>/ 7</span></strong><small>({count} ratings)</small></> : <strong class="unrated">Not rated yet</strong>}</span>
+</div>

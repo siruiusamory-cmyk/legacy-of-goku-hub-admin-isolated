@@ -1,0 +1,147 @@
+{
+  "assets": [
+    {
+      "file": "log2-canyon.png",
+      "game": "Dragon Ball Z: The Legacy of Goku II",
+      "title": "Canyon",
+      "contributor": "Son Gohan",
+      "page": "https://spritedatabase.net/file/2915",
+      "url": "https://spritedatabase.net/files/gba/978/Background/canyon.png",
+      "bytes": 22755,
+      "width": 256,
+      "height": 256,
+      "sha256": "d5da6a978d43536d84e0235b621e633c07c630605cdf2eca8285d1ee87a39ec2",
+      "use": "Ambient decorative scenery only; owner-authorized game asset use in LOG-HUB-004C",
+      "processing": "Unmodified source PNG; CSS pixelated integer scaling at 1x mobile and 2x desktop",
+      "redistribution_permission": "Unverified; retained following explicit owner instruction after provenance review"
+    },
+    {
+      "file": "buus-fury-portrait-frame.png",
+      "game": "Dragon Ball Z: Buu's Fury",
+      "title": "Golden portrait frame",
+      "contributor": "Omega",
+      "page": "https://spritedatabase.net/file/21488",
+      "url": "https://spritedatabase.net/files/gba/976/Sprite/BuusFury_Portraits.png",
+      "bytes": 357,
+      "width": 64,
+      "height": 64,
+      "source_dimensions": [
+        486,
+        3997
+      ],
+      "source_sha256": "5be11de6891a3000f8c12ff21738d567e512904e05a1a9ec61720c3c09869d80",
+      "sha256": "629aefd415510f86d3d92a62c2196af53c28d1cef3d217d612b3161e0b784215",
+      "crop": {
+        "left": 33,
+        "top": 54,
+        "width": 64,
+        "height": 64
+      },
+      "processing": "Golden palette border, with straight edge samples replacing center ornament bands for repetition.",
+      "redistribution_permission": "Unverified; owner explicitly requested the game portrait frame."
+    },
+    {
+      "file": "buus-fury-portrait-ornaments.png",
+      "game": "Dragon Ball Z: Buu's Fury",
+      "title": "Golden portrait frame",
+      "contributor": "Omega",
+      "page": "https://spritedatabase.net/file/21488",
+      "url": "https://spritedatabase.net/files/gba/976/Sprite/BuusFury_Portraits.png",
+      "bytes": 573,
+      "width": 64,
+      "height": 64,
+      "source_dimensions": [
+        486,
+        3997
+      ],
+      "source_sha256": "5be11de6891a3000f8c12ff21738d567e512904e05a1a9ec61720c3c09869d80",
+      "sha256": "6d018025f3f785c12ea6a47c3eb4791296a920b3d4995a1cc4decdb0c3bbd894",
+      "crop": {
+        "left": 33,
+        "top": 54,
+        "width": 64,
+        "height": 64
+      },
+      "processing": "Golden palette border through eight source pixels, preserving complete center ornaments; all portrait interior and non-gold colors made transparent.",
+      "redistribution_permission": "Unverified; owner explicitly requested the game portrait frame."
+    },
+    {
+      "file": "log1-kame-house.png",
+      "game": "Dragon Ball Z: The Legacy of Goku",
+      "title": "Kame House",
+      "contributor": "Fab & Nrt",
+      "page": "https://www.spriters-resource.com/game_boy_advance/dbzlog/asset/594384/",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 480,
+        "height": 320
+      },
+      "source_file": "Game Boy Advance - Dragon Ball Z_ The Legacy of Goku - Backgrounds - Kame House.png",
+      "source_dimensions": [
+        480,
+        387
+      ],
+      "source_sha256": "5c56e4a8d65df849832cad11eac7fba7455a0a016219f5b3ce2690f54ada7310",
+      "width": 480,
+      "height": 320,
+      "bytes": 25397,
+      "sha256": "2448c3c73c8f3fd3f89141c6278060108fdb910e9c194616420161f9c8c656c0",
+      "processing": "Character-free scenery crop from owner-supplied Spriters Resource sheet; native pixels, lossless PNG; sheet labels excluded",
+      "use": "Game-specific ambient interface scenery, not project artwork",
+      "redistribution_permission": "Unverified; authentic game artwork retained under explicit owner instructions"
+    },
+    {
+      "file": "log2-gokus-house.png",
+      "game": "Dragon Ball Z: The Legacy of Goku II",
+      "title": "Goku's House, East District 439 (Autumn)",
+      "contributor": "SpYn_",
+      "page": "https://www.spriters-resource.com/game_boy_advance/dbzlog2/asset/484628/",
+      "crop": {
+        "left": 900,
+        "top": 1100,
+        "width": 480,
+        "height": 400
+      },
+      "source_file": "Game Boy Advance - Dragon Ball Z_ The Legacy of Goku II - Backgrounds - East District 439 (Autumn).png",
+      "source_dimensions": [
+        2661,
+        2365
+      ],
+      "source_sha256": "8d479926a319d46598dd9829cff4ac30e8f9a3a88a519d281dd1d3520684f59e",
+      "width": 480,
+      "height": 400,
+      "bytes": 31496,
+      "sha256": "b27cf87fecbd5582c4e0da6956de45d7755a586ed5e43f502352203d2a2029d8",
+      "processing": "Character-free scenery crop from owner-supplied Spriters Resource sheet; native pixels, lossless PNG; sheet labels excluded",
+      "use": "Game-specific ambient interface scenery, not project artwork",
+      "redistribution_permission": "Unverified; authentic game artwork retained under explicit owner instructions"
+    },
+    {
+      "file": "buus-fury-snake-way.png",
+      "game": "Dragon Ball Z: Buu's Fury",
+      "title": "Snake Way",
+      "contributor": "-Bwar-",
+      "page": "https://www.spriters-resource.com/game_boy_advance/dbzbuusfury/asset/53228/",
+      "crop": {
+        "left": 1039,
+        "top": 1398,
+        "width": 480,
+        "height": 400
+      },
+      "source_file": "Game Boy Advance - Dragon Ball Z_ Buu's Fury - Maps - Check-In Station.png",
+      "source_dimensions": [
+        1727,
+        1821
+      ],
+      "source_sha256": "f5b9a0a3c9b5d95f7cd18bf114ce2655a1d9e4b50800bfa55f27c14b570be811",
+      "width": 480,
+      "height": 400,
+      "bytes": 25123,
+      "sha256": "3e1676e87e8bf4514f039d20f40bdc6eb52fcd2ccb880a1c7e28c2e89855328d",
+      "processing": "Character-free scenery crop from owner-supplied Spriters Resource sheet; native pixels, lossless PNG; sheet labels excluded",
+      "use": "Game-specific ambient interface scenery, not project artwork",
+      "redistribution_permission": "Unverified; authentic game artwork retained under explicit owner instructions"
+    }
+  ]
+}

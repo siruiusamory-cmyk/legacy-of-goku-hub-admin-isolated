@@ -1,0 +1,35 @@
+name: Report project content
+description: Report inappropriate artwork, misleading information or impersonation.
+title: '[Content report] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports notify maintainers; they do not approve, transfer, hide or edit a listing automatically.
+        Do not attach or embed inappropriate images. Link the project/repository and describe the concern.
+        Do not include private information or credentials. Maintainers decide through protected policy.
+  - type: input
+    id: repository
+    attributes:
+      label: Project or repository URL
+      placeholder: https://github.com/OWNER/REPO
+    validations:
+      required: true
+  - type: dropdown
+    id: concern
+    attributes:
+      label: Concern
+      options:
+        - Inappropriate artwork
+        - Misleading project information
+        - Impersonation or ownership concern
+        - Spam or another content-policy violation
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Explain what needs moderator attention without embedding the reported imagery.
+    validations:
+      required: true

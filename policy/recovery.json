@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "enabled": true,
+  "source_repository": "siruiusamory-cmyk/legacy-of-goku-hub-admin-isolated",
+  "source_repository_id": 1460299828,
+  "backup_repository": "siruiusamory-cmyk/legacy-of-goku-hub-admin-isolated-vault",
+  "backup_repository_id": 1460299920,
+  "default_branch": "main",
+  "signing_key_id": "ed25519-admin-isolated-013",
+  "public_keys": {
+    "ed25519-admin-isolated-013": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA0LHZKxTyXxpYdxbPDM5koUKBddljzkyawqrMT5rnqZs=\n-----END PUBLIC KEY-----\n"
+  }
+}

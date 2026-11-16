@@ -1,0 +1,29 @@
+{
+  "proposal_only": true,
+  "requires_owner_approval": true,
+  "trusted_owner_ids": [],
+  "projects": [
+    {
+      "repository_id": 1432341427,
+      "owner_id": 287528505,
+      "decision": "approved"
+    },
+    {
+      "repository_id": 1429374563,
+      "owner_id": 287528505,
+      "decision": "approved"
+    },
+    {
+      "repository_id": 1398951057,
+      "owner_id": 287528505,
+      "decision": "approved"
+    }
+  ],
+  "blocked_projects": [
+    {
+      "repository_id": 1429329775,
+      "owner_id": 287528505,
+      "reason": "Do not apply until current approved cover art is available; preview placeholder is not repository artwork."
+    }
+  ]
+}

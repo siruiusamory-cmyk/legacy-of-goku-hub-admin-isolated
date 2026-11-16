@@ -1,0 +1,74 @@
+[
+  {
+    "name": "homepage",
+    "kind": "desktop",
+    "width": 1448,
+    "height": 1086,
+    "transferred": 248320,
+    "scriptBytes": 2022,
+    "external": []
+  },
+  {
+    "name": "homepage",
+    "kind": "mobile",
+    "width": 390,
+    "height": 844,
+    "transferred": 248320,
+    "scriptBytes": 2022,
+    "external": []
+  },
+  {
+    "name": "homepage",
+    "kind": "mobile-320",
+    "width": 320,
+    "height": 844,
+    "transferred": 248320,
+    "scriptBytes": 2022,
+    "external": []
+  },
+  {
+    "name": "homepage",
+    "kind": "tablet",
+    "width": 760,
+    "height": 1086,
+    "transferred": 248320,
+    "scriptBytes": 2022,
+    "external": []
+  },
+  {
+    "name": "detail",
+    "kind": "desktop",
+    "width": 1448,
+    "height": 1086,
+    "transferred": 184152,
+    "scriptBytes": 1291,
+    "external": []
+  },
+  {
+    "name": "detail",
+    "kind": "mobile",
+    "width": 390,
+    "height": 844,
+    "transferred": 184152,
+    "scriptBytes": 1291,
+    "external": []
+  },
+  {
+    "name": "detail",
+    "kind": "mobile-320",
+    "width": 320,
+    "height": 844,
+    "transferred": 184152,
+    "scriptBytes": 1291,
+    "external": []
+  },
+  {
+    "name": "detail",
+    "kind": "tablet",
+    "width": 760,
+    "height": 1086,
+    "transferred": 184152,
+    "scriptBytes": 1291,
+    "external": []
+  }
+]

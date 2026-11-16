@@ -1,0 +1,12 @@
+{
+  "id": "fixture-only",
+  "title": "TEST FIXTURE — not a community project",
+  "developer": "Test fixtures",
+  "description": "Synthetic test data only; never an approved or published community listing.",
+  "game": "legacy-of-goku-2",
+  "category": "rom-hack",
+  "status": "in-development",
+  "repository": "https://github.com/fixture-owner/fixture-repo",
+  "cover": "https://raw.githubusercontent.com/fixture-owner/fixture-repo/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/images/cover.png",
+  "screenshots": ["https://raw.githubusercontent.com/fixture-owner/fixture-repo/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/images/screen.png"]
+}

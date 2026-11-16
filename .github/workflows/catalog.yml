@@ -1,0 +1,344 @@
+name: Synchronize, protect and publish catalog
+on:
+  push:
+    branches:
+      - main
+  issues:
+    types:
+      - opened
+      - edited
+      - reopened
+      - closed
+  schedule:
+    - cron: 23 7 * * *
+  workflow_dispatch: null
+permissions: {}
+concurrency:
+  group: catalog-publisher
+  cancel-in-progress: false
+jobs:
+  synchronize:
+    permissions: &a1
+      contents: read
+      issues: read
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - &a2
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - &a3
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "24"
+      - &a4
+        run: npm ci --ignore-scripts
+      - &a5
+        id: config
+        run: node src/backup-cli.js config
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        id: app
+        with:
+          app-id: ${{ vars.BACKUP_APP_ID }}
+          private-key: ${{ secrets.BACKUP_APP_PRIVATE_KEY }}
+          owner: ${{ steps.config.outputs.owner }}
+          repositories: ${{ steps.config.outputs.repository }}
+          permission-contents: read
+      - run: node src/backup-cli.js restore .previous
+        env: &a6
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_TOKEN: ${{ steps.app.outputs.token }}
+      - run: node src/service-cli.js publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SNAPSHOT_DIR: .previous
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: candidate
+          include-hidden-files: true
+          path: |-
+            .generated/
+            !.generated/snapshot/github-cache.json
+          retention-days: 30
+          if-no-files-found: error
+    if: github.ref == format('refs/heads/{0}',
+      github.event.repository.default_branch) && vars.PUBLISHING_ENABLED ==
+      'true' && (github.event_name != 'issues' ||
+      startsWith(github.event.issue.title, '[Submission]') ||
+      startsWith(github.event.issue.title, '[Manifest]') ||
+      startsWith(github.event.issue.title, '[Claim]'))
+  backup:
+    needs: synchronize
+    permissions: *a1
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        id: app
+        with:
+          app-id: ${{ vars.BACKUP_APP_ID }}
+          private-key: ${{ secrets.BACKUP_APP_PRIVATE_KEY }}
+          owner: ${{ steps.config.outputs.owner }}
+          repositories: ${{ steps.config.outputs.repository }}
+          permission-contents: write
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: candidate
+          path: .generated
+      - run: node src/backup-cli.js backup
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_TOKEN: ${{ steps.app.outputs.token }}
+          BACKUP_SIGNING_KEY: ${{ secrets.BACKUP_SIGNING_KEY }}
+          SOURCE_COMMIT: ${{ github.sha }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: backup-receipt
+          path: .generated/backup-receipt.json
+          retention-days: 30
+          if-no-files-found: error
+  anchor:
+    needs: backup
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        id: app
+        with:
+          app-id: ${{ vars.BACKUP_APP_ID }}
+          private-key: ${{ secrets.BACKUP_APP_PRIVATE_KEY }}
+          owner: ${{ steps.config.outputs.owner }}
+          repositories: ${{ steps.config.outputs.repository }}
+          permission-contents: read
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: backup-receipt
+          path: .generated
+      - run: node src/backup-cli.js anchor
+        env: *a6
+  publish:
+    needs: anchor
+    permissions: *a1
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        id: app
+        with:
+          app-id: ${{ vars.BACKUP_APP_ID }}
+          private-key: ${{ secrets.BACKUP_APP_PRIVATE_KEY }}
+          owner: ${{ steps.config.outputs.owner }}
+          repositories: ${{ steps.config.outputs.repository }}
+          permission-contents: read
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: candidate
+          path: .generated
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: backup-receipt
+          path: .generated
+      - run: node src/backup-cli.js verify-publication
+        env: *a6
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: catalog-state
+          path: .generated/snapshot/
+          retention-days: 30
+          if-no-files-found: error
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: catalog
+          path: .generated/work/dist/
+          retention-days: 30
+          if-no-files-found: error
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: validation-report
+          path: .generated/report.json
+          retention-days: 30
+          if-no-files-found: error
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: protected-backup-receipt
+          path: .generated/backup-receipt.json
+          retention-days: 30
+          if-no-files-found: error
+  feedback:
+    needs: publish
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - *a2
+      - *a3
+      - run: npm ci --ignore-scripts
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: validation-report
+          path: .feedback
+      - run: node src/service-cli.js feedback
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+    if: github.event_name == 'issues'
+  notify:
+    needs:
+      - synchronize
+      - backup
+      - anchor
+      - publish
+    if: always() && vars.PUBLISHING_ENABLED == 'true' && (needs.synchronize.result
+      == 'failure' || needs.backup.result == 'failure' || needs.anchor.result ==
+      'failure' || needs.publish.result == 'failure' || needs.publish.result ==
+      'success')
+    permissions:
+      contents: read
+      issues: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "24"
+      - run: npm ci --ignore-scripts
+      - run: node tools/notify-operations.js
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OPERATION_FAILED: ${{ needs.synchronize.result == 'failure' ||
+            needs.backup.result == 'failure' || needs.anchor.result == 'failure'
+            || needs.publish.result == 'failure' }}
+    concurrency:
+      group: loghub-operations-alert
+      cancel-in-progress: false
+
+  website:
+    needs: publish
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      artifact_id: ${{ steps.website-artifact.outputs.artifact-id }}
+      manifest_sha256: ${{ steps.seal.outputs.manifest_sha256 }}
+    steps:
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - id: app
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        with:
+          app-id: ${{ vars.BACKUP_APP_ID }}
+          private-key: ${{ secrets.BACKUP_APP_PRIVATE_KEY }}
+          owner: ${{ steps.config.outputs.owner }}
+          repositories: ${{ steps.config.outputs.repository }}
+          permission-contents: read
+      - run: node src/backup-cli.js export .previous
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_TOKEN: ${{ steps.app.outputs.token }}
+      - run: npm run site:build -- --snapshot .previous
+        env:
+          SITE_BASE: /
+          PUBLIC_RATINGS_ENABLED: ${{ vars.RATINGS_ENABLED }}
+          PUBLIC_RATINGS_API: ${{ vars.RATINGS_API_ORIGIN }}
+          PUBLIC_INTAKE_ENABLED: ${{ vars.INTAKE_ENABLED }}
+          PUBLIC_INTAKE_API: ${{ vars.INTAKE_API_ORIGIN }}
+          PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+      - run: node src/backup-cli.js config
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - id: seal
+        run: node tools/site/check-deployment.js seal .site/production "$GITHUB_SHA"
+      - id: website-artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: website
+          path: .site/production/
+          retention-days: 30
+          if-no-files-found: error
+  deploy-website:
+    needs: [publish, website]
+    if: vars.SITE_DEPLOYMENT_ENABLED == 'true' && github.ref == 'refs/heads/main' && github.ref_protected && github.event.repository.default_branch == 'main' && needs.publish.result == 'success' && needs.website.result == 'success'
+    permissions:
+      contents: read
+      actions: read
+    environment:
+      name: cloudflare-pages
+      url: https://loghub.pages.dev/
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - *a2
+      - *a3
+      - name: Download the exact verified website artifact from this run
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.website.outputs.artifact_id }}
+          path: ${{ runner.temp }}/loghub-direct-upload/website
+          merge-multiple: true
+      - name: Verify website artifact inventory and current policy
+        env:
+          WEBSITE_DIR: ${{ runner.temp }}/loghub-direct-upload/website
+          EXPECTED_MANIFEST_SHA256: ${{ needs.website.outputs.manifest_sha256 }}
+        run: node tools/site/check-deployment.js verify "$WEBSITE_DIR" "$GITHUB_SHA" "$EXPECTED_MANIFEST_SHA256"
+      - name: Verify the existing exact Cloudflare project
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: node tools/site/cloudflare-project.js
+      - name: Reject a stale source revision before deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SOURCE_BRANCH: ${{ github.event.repository.default_branch }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          current=$(gh api "repos/$SOURCE_REPOSITORY/git/ref/heads/$SOURCE_BRANCH" --jq '.object.sha')
+          test "$current" = "$EXPECTED_SHA"
+      - name: Upload verified static assets to loghub.pages.dev
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.105.0'
+          packageManager: npm
+          workingDirectory: ${{ runner.temp }}/loghub-direct-upload
+          preCommands: |
+            node "$GITHUB_WORKSPACE/tools/site/check-deployment.js" verify website "$GITHUB_SHA" "$EXPECTED_MANIFEST_SHA256"
+            test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')" = "$GITHUB_SHA"
+          command: pages deploy website --project-name=loghub --branch=main --commit-hash=${{ github.sha }}
+        env:
+          WRANGLER_SEND_METRICS: 'false'
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MANIFEST_SHA256: ${{ needs.website.outputs.manifest_sha256 }}

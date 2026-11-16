@@ -1,0 +1,145 @@
+{
+  "source_revision": "8157622a08e71364dda986277dd27336ed27f91a",
+  "recorded_result": "PASS",
+  "scope": "Prior local isolated fixture lifecycle, not a new hosted approval/publication run",
+  "checks": [
+    {
+      "method": "manifest",
+      "scenario": "1-new-submission-held",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "2-image-normalization",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "3-private-review-cli-and-explicit-isolated-approval",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "4-approved-catalog-exact-bytes",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "5-same-filename-same-URL-held-and-rejected",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "6-approved-replacement-exact-bytes",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "7-abuse-and-duplicates-held",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "identity-and-ordered-set-bindings",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "8-suspension-delisting-and-last-artwork-removal",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "9-old-signed-recovery-cannot-republish",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "1-new-submission-held",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "2-image-normalization",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "3-private-review-cli-and-explicit-isolated-approval",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "4-approved-catalog-exact-bytes",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "5-same-filename-same-URL-held-and-rejected",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "6-approved-replacement-exact-bytes",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "7-abuse-and-duplicates-held",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "identity-and-ordered-set-bindings",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "8-suspension-delisting-and-last-artwork-removal",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "9-old-signed-recovery-cannot-republish",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "7-explicit-issue-rejection-with-positive-control",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "5-rejection-recorded-under-isolated-policy",
+      "result": "PASS"
+    },
+    {
+      "method": "manifest",
+      "scenario": "2-corrupt-image-rejected-and-approved-retained",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "7-explicit-issue-rejection-with-positive-control",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "5-rejection-recorded-under-isolated-policy",
+      "result": "PASS"
+    },
+    {
+      "method": "guided",
+      "scenario": "2-corrupt-image-rejected-and-approved-retained",
+      "result": "PASS"
+    }
+  ],
+  "original_local_report_sha256": {
+    "results.json": "f465fd911e7bd94f371a9f7368f1c0d0d5731eaa496983bdba8c4c1c512999da",
+    "EVIDENCE.md": "f43bf7fa8ee6e0dd743ac29fa4cf7d52d957566048b7c9b2de9423830409b10e",
+    "ZEROSHOT-REVIEW.md": "3d958d150d3c69425446c82843dc42181d590a6e5a04e9d01620cf570f6a442f",
+    "FINAL-REPORT.md": "ce42f46af17e445b8315b50877699ea02945e2af73de43c76dc895ca8ed0a5f3"
+  },
+  "zeroshot_run": "01a1e0ff-c551-7741-b6a7-980c5cfb4cb3",
+  "zeroshot_verdict": "PASS"
+}

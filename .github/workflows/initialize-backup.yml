@@ -1,0 +1,62 @@
+name: Initialize durable recovery (owner only)
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: Type INITIALIZE NEW EMPTY HUB (never use to discard an existing catalog)
+        required: true
+        type: string
+permissions: {}
+concurrency:
+  group: catalog-publisher
+  cancel-in-progress: false
+jobs:
+  initialize:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && inputs.confirmation == 'INITIALIZE NEW EMPTY HUB'
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - id: config
+        run: node src/backup-cli.js config
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - run: node src/backup-cli.js prepare-bootstrap
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INITIALIZE_BACKUP: I_AUTHORIZE_INITIAL_RECOVERY_POINT
+      - id: app
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349
+        with:
+          app-id: ${{ vars.BACKUP_APP_ID }}
+          private-key: ${{ secrets.BACKUP_APP_PRIVATE_KEY }}
+          owner: ${{ steps.config.outputs.owner }}
+          repositories: ${{ steps.config.outputs.repository }}
+          permission-contents: write
+      - run: node src/backup-cli.js initialize .bootstrap/snapshot dist/catalog.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_TOKEN: ${{ steps.app.outputs.token }}
+          BACKUP_SIGNING_KEY: ${{ secrets.BACKUP_SIGNING_KEY }}
+          INITIALIZE_BACKUP: I_AUTHORIZE_INITIAL_RECOVERY_POINT
+          SOURCE_COMMIT: ${{ github.sha }}
+      - run: node src/backup-cli.js anchor
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_TOKEN: ${{ steps.app.outputs.token }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: initial-protected-recovery-receipt
+          path: .generated/backup-receipt.json
+          retention-days: 30
+          if-no-files-found: error

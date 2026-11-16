@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-bold-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-bold-italic-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/inter-regular-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/inter-semibold-latin.woff2") format("woff2");
+}
+body {
+  font-size: var(--text-body);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+}
+h1,h2,h3,.brand,.empty-art-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-style: normal;
+  line-height: var(--leading-title);
+  letter-spacing: var(--tracking-display);
+}
+h1,.detail-intro h1 {font-size: var(--text-title); white-space: normal;}
+h2 {font-size: var(--text-section);}
+.project-card h3 {font-size: var(--text-card);}
+.panel-title {font-size: var(--text-panel); letter-spacing: .018em;}
+.brand,.spotlight h1,.detail-intro:has(.featured-label) h1,.empty-art-title {font-style: italic;}
+.brand {font-size: clamp(1.5rem, 2.25vw, 2rem);}
+nav,.button,button,input,select,summary,.badge,.featured-label,strong,b,dt,.rating-option {
+  font-family: var(--font-body);
+  font-weight: var(--weight-ui);
+  font-style: normal;
+  letter-spacing: var(--tracking-ui);
+}
+input {font-weight: var(--weight-body);}
+.button,button,input,select {line-height: var(--leading-ui);}
+p,.description-box {line-height: var(--leading-body);}
+.directory-heading p,.community-rating .rating-value strong {font-style: normal;}
+.detail-developer {font-size: 1.125rem; line-height: var(--leading-ui);}
+.detail-intro {margin-top: 0;}
+.spotlight-description {font-size: var(--text-body); line-height: var(--leading-body);}
+.rating-selector>p,.rating-selector .rating-preview-result {line-height: var(--leading-ui);}
+@media(max-width:580px) {
+  .panel-title {font-size: 1.4375rem;}
+  .brand {font-size: 1.5625rem;}
+  .detail-intro h1 {font-size: 2.125rem; letter-spacing: .018em;}
+  .project-card h3 {font-size: var(--text-card);}
+}
+@media(max-width:350px) {
+  .brand {font-size: 1.375rem;}
+}

@@ -1,0 +1,16 @@
+{
+  "name": "loghub-admin",
+  "main": "worker.js",
+  "compatibility_date": "2026-07-02",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": {"enabled": false},
+  "assets": {"directory": "./public", "binding": "ASSETS", "run_worker_first": true},
+  "vars": {
+    "ADMIN_ENABLED": "false",
+    "ADMIN_ORIGIN": "https://loghub-admin.siruiusamory.workers.dev",
+    "SITE_ORIGIN": "https://loghub.pages.dev",
+    "SOURCE_REPO": "siruiusamory-cmyk/legacy-of-goku-hub"
+  },
+  "d1_databases": [{"binding": "DB", "database_name": "loghub-intake", "database_id": "7f30d601-b245-4384-95de-792b0b5ed48f", "migrations_dir": "../intake/migrations"}]
+}

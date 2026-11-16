@@ -1,0 +1,32 @@
+name: Submit a project
+description: Submit a GitHub-hosted Legacy of Goku project for moderator review.
+title: "[Submission] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read README.md first. Submit as repository owner or public organization member.
+        Images must be static PNG/JPEG/WebP, <=5 MiB, <=20 MP, pinned to a 40-character commit SHA in your repository.
+        Releases must distribute patches, fan projects or tools, never ROMs. In-development projects need no release.
+        Replace every placeholder. Omit asset_name if there is exactly one supported distribution asset.
+  - type: textarea
+    id: record
+    attributes:
+      label: Project record
+      description: One JSON object. Use the controlled values documented in README.md. Do not add release metadata or featured.
+      render: json
+      value: |
+        {
+          "id": "replace-with-project-id",
+          "title": "REPLACE",
+          "developer": "REPLACE",
+          "description": "REPLACE with at least 20 characters describing your project.",
+          "game": "legacy-of-goku-2",
+          "category": "rom-hack",
+          "status": "in-development",
+          "repository": "https://github.com/OWNER/REPO",
+          "cover": "https://raw.githubusercontent.com/OWNER/REPO/COMMIT_SHA/images/cover.png",
+          "screenshots": []
+        }
+    validations:
+      required: true

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "enabled"],
+  "properties": {
+    "version": {"const": 1}, "enabled": {"type": "boolean"},
+    "purpose": {"enum": ["production", "integration"]},
+    "source_repository": {"type": "string", "maxLength": 150},
+    "source_repository_id": {"type": "integer", "minimum": 1},
+    "backup_repository": {"type": "string", "maxLength": 150},
+    "backup_repository_id": {"type": "integer", "minimum": 1},
+    "default_branch": {"type": "string", "pattern": "^[A-Za-z0-9_/-]+$", "maxLength": 100},
+    "signing_key_id": {"type": "string", "pattern": "^[a-z0-9-]{1,40}$"},
+    "public_keys": {"type": "object", "minProperties": 1, "maxProperties": 10, "propertyNames": {"pattern": "^[a-z0-9-]{1,40}$"}, "additionalProperties": {"type": "string", "maxLength": 1000}},
+    "rollback": {
+      "type": "object", "additionalProperties": false,
+      "required": ["point", "observed_newest", "reason"],
+      "properties": {
+        "point": {"type": "string", "pattern": "^[1-9][0-9]*-[a-f0-9]{64}$"},
+        "observed_newest": {"type": "string", "pattern": "^[1-9][0-9]*-[a-f0-9]{64}$"},
+        "reason": {"type": "string", "minLength": 10, "maxLength": 500}
+      }
+    }
+  },
+  "if": {"properties": {"enabled": {"const": true}}},
+  "then": {"required": ["source_repository", "source_repository_id", "backup_repository", "backup_repository_id", "default_branch", "signing_key_id", "public_keys"]}
+}

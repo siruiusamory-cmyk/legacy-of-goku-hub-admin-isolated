@@ -1,0 +1,170 @@
+body {
+  position: relative;
+  isolation: isolate;
+  background: radial-gradient(ellipse at 70% 0%,color-mix(in srgb,var(--blue-deep) 28%,transparent),transparent 65%),var(--background);
+}
+.world-scenery {position: absolute; inset: 100px 0 auto; height: 448px; z-index: -1; pointer-events: none; overflow: hidden;}
+.game-terrain {
+  position: absolute;
+  background-image: var(--scenery-image);
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+.game-terrain {
+  top: 0;
+  right: 0;
+  width: min(100%,960px);
+  height: 448px;
+  background-size: calc(var(--scenery-width) * 2) calc(var(--scenery-height) * 2);
+  background-position: center;
+  opacity: .5;
+  mask-image: linear-gradient(90deg,transparent,#000 65%),linear-gradient(#000 60%,transparent);
+  mask-composite: intersect;
+}
+.site-header {
+  border-bottom: 2px solid var(--frame-gold);
+  background: color-mix(in srgb,var(--navy) 74%,var(--ink));
+  box-shadow: 0 3px 0 var(--frame-shadow);
+}
+.desktop-nav .active:after {background: var(--gold); box-shadow: 0 0 8px color-mix(in srgb,var(--gold) 36%,transparent); border-radius: 0;}
+.desktop-nav a:hover,.mobile-nav a:hover {color: var(--gold);}
+.mobile-nav[open] {border-color: var(--frame-gold);}
+.preview-notice {background: color-mix(in srgb,var(--navy) 32%,var(--ink)); border-bottom-color: var(--line);}
+.spotlight {padding: 24px var(--gutter); background: transparent; border-bottom: 1px solid var(--line);}
+.spotlight-inner {
+  padding: 0;
+  position: relative;
+  --portrait-scale: 2;
+  --portrait-border: 8px;
+  max-width: calc(var(--content-width) - 2 * var(--gutter));
+  gap: 0;
+  grid-template-columns: minmax(0,1.08fr) minmax(0,1fr);
+  border: 8px solid transparent;
+  border-image: url('../assets/buus-fury-portrait-frame.png') 4 / 8px / 0 repeat;
+  image-rendering: pixelated;
+  border-radius: 0;
+  background-clip: padding-box;
+  box-shadow: var(--shadow);
+  background: var(--panel-fill);
+  background-clip: padding-box;
+}
+.spotlight-art {height: 100%; min-height: 320px; aspect-ratio: auto; border: 0; border-right: 1px solid var(--border); border-radius: 0; box-shadow: none; background: var(--surface-low);}
+.spotlight-art img {object-fit: contain; image-rendering: auto;}
+.spotlight-copy {image-rendering: auto;}
+.spotlight-copy {padding: 24px 28px; display: grid; gap: 12px; align-content: center;}
+.spotlight-copy h1 {margin: 0;}
+.spotlight-copy .featured-label {justify-self: start; margin: 0;}
+.spotlight-copy .hero-actions {margin-top: 0;}
+.spotlight-description {margin: 0; max-width: 55ch;}
+.spotlight .rating-display {padding: 10px 0 0; border-top: 1px solid var(--line);}
+.featured-label {box-shadow: none; border-radius: 3px; background: var(--menu-fill); padding: 2px 10px;}
+.button {
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px var(--frame-shadow),inset 0 0 0 3px color-mix(in srgb,var(--paper) 40%,transparent),0 3px 0 var(--frame-shadow);
+}
+.button.primary {border: 2px solid var(--frame-highlight);}
+.button.secondary {background: var(--menu-fill); border-color: var(--border); box-shadow: inset 0 0 0 1px var(--frame-shadow);}
+.button:hover {outline: 1px solid var(--gold); outline-offset: 2px;}
+.button:active {box-shadow: inset 0 2px 4px var(--frame-shadow);}
+.button:focus-visible {outline-offset: 4px;}
+.directory-heading {gap: 20px; border-bottom-color: var(--line); margin-bottom: 18px;}
+.directory-heading h2 {background: var(--menu-fill); padding: 8px 20px 8px 12px; border-left: 5px solid var(--gold);}
+.directory-heading h2:before {content: none;}
+.directory-controls input,.directory-controls select,.filter-chip {border-radius: 5px; background: var(--menu-fill); border-color: var(--border);}
+.filter-controls select {min-width: 154px; max-width: none;}
+.directory-controls select:hover,.directory-controls input:hover {border-color: var(--frame-highlight);}
+.filter-chip.selected {background: linear-gradient(var(--gold),var(--orange)); color: var(--ink); border-color: var(--frame-highlight); box-shadow: inset 0 0 0 2px color-mix(in srgb,var(--ink) 28%,transparent);}
+.project-card,.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--frame-radius);
+  background: var(--panel-fill);
+  box-shadow: inset 0 0 0 2px var(--frame-shadow),var(--shadow);
+}
+.project-card {border-width: 1px;}
+.project-card:hover,.project-card:focus-within {border-color: var(--gold); box-shadow: inset 0 0 0 2px var(--frame-shadow),0 0 0 1px var(--gold);}
+.card-art {height: 146px; aspect-ratio: auto; border-bottom: 1px solid var(--line); background: var(--surface-low);}
+.card-art img {object-position: center;}
+.card-content {padding: 10px 16px 12px;}
+.card-content h3 a {display: inline-block; padding-block: 2px;}
+.card-content h3 a:hover {color: var(--gold);}
+.badge {border-radius: 5px;}
+.icon-button {border-radius: 4px;}
+.icon-button:hover {background: var(--blue-deep); border-color: var(--frame-highlight);}
+.rating-display.compact {border-top-color: var(--line);}
+.detail-art {--portrait-scale: 1; --portrait-border: 4px; border: 4px solid transparent; border-image: url('../assets/buus-fury-portrait-frame.png') 4 / 4px / 0 repeat; image-rendering: pixelated; border-radius: 0; background: var(--surface-low); background-clip: padding-box; box-shadow: none;}
+.detail-art img {image-rendering: auto;}
+.detail-hero:has(.featured-label) .detail-art {--portrait-scale: 2; --portrait-border: 8px; border-width: 8px; border-image-width: 8px;}
+.breadcrumbs {background: var(--menu-fill); width: fit-content; max-width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 3px;}
+.detail-hero {margin-top: 18px; align-items: center;}
+.detail-rating {
+  background-color: var(--navy);
+  background-image: linear-gradient(var(--menu-grid) 1px,transparent 1px),linear-gradient(90deg,var(--menu-grid) 1px,transparent 1px),var(--panel-fill);
+  background-size: 12px 12px,12px 12px,100% 100%;
+  padding-block: 18px;
+}
+.panel-title {color: var(--paper);}
+.panel-title:before {width: 6px; height: 18px; transform: none; background: var(--gold); box-shadow: none; vertical-align: -1px; margin-right: 10px;}
+.about .panel-title {color: var(--paper); background: none; padding: 0; margin-bottom: 12px;}
+.about .panel-title:before {width: 0; height: 0; border-left: 6px solid var(--gold); border-block: 5px solid transparent; background: none;}
+.description-box {border-radius: 3px; background: var(--reading-surface); color: var(--ink); border-color: var(--frame-highlight); padding: 16px 18px;}
+.project-information dl,.approved-links ul {background: color-mix(in srgb,var(--navy) 56%,var(--ink)); border-radius: 3px;}
+.rating-option input:checked+.rating-choice {box-shadow: 0 0 0 2px var(--gold); background: color-mix(in srgb,var(--gold) 15%,var(--navy));}
+
+.screenshot-gallery a {border-radius: 4px; border-color: var(--frame-highlight);}
+.site-footer {border-top-color: var(--line); background: color-mix(in srgb,var(--background) 92%,transparent);}
+.empty-art {border-color: var(--frame-gold); border-radius: 3px; background: var(--menu-fill);}
+.empty-orbit {border-color: var(--frame-gold);}
+.empty-directory {border: 1px solid var(--border); background: var(--panel-fill); border-radius: var(--frame-radius);}
+.project-artwork {position: relative; display: block; width: 100%; height: 100%; min-width: 0;}
+.project-artwork img {display: block; width: 100%; height: 100%;}
+.detail-art.project-artwork {height: 276px;}
+.detail-art.project-artwork img {object-fit: cover; object-position: center;}
+.artwork-unavailable {height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 16px; background: var(--menu-fill); color: var(--muted); font-size: var(--text-small);}
+.artwork-unavailable>span {font-size: 24px; color: var(--gold);}
+@media(max-width:900px) {
+  .spotlight {padding: 18px var(--gutter);}
+  .spotlight-inner {padding: 0; gap: 0;}
+  .spotlight-copy {padding: 20px;}
+  .card-art {height: 126px;}
+  .filter-controls {flex: 1 0 100%; display: grid; grid-template-columns: 48px repeat(3,minmax(0,1fr));}
+  .sort-label {flex-basis: 100%; margin-left: 0;}
+  .sort-label select {width: 100%;}
+}
+@media(max-width:580px) {
+  .spotlight {padding: 16px;}
+  .spotlight-inner {--portrait-scale: 1; --portrait-border: 4px; max-width: 100%; padding: 0; gap: 0; border-width: 4px; border-image-width: 4px;}
+  .spotlight-copy {padding: 16px 14px;}
+  .hero-actions {flex-direction: column; gap: 10px;}
+  .spotlight-art {height: auto; min-height: 0; aspect-ratio: 16/9; border-right: 0; border-bottom: 1px solid var(--border);}
+  .world-scenery {top: 145px; height: 320px;}
+  .game-terrain {opacity: .5; background-size: var(--scenery-width) var(--scenery-height); height: 320px; width: 100%; mask-image: linear-gradient(#000 60%,transparent);}
+  .card-art {height: 100px;}
+  .card-content {padding: 8px;}
+  .filter-controls {display: grid; grid-template-columns: 48px minmax(0,1fr); width: 100%;}
+  .filter-controls label {width: 100%;}
+  .filter-controls label:nth-of-type(2),.filter-controls label:nth-of-type(3) {grid-column: 1/-1;}
+  .filter-controls select {width: 100%; min-height: 44px; font-size: 14px; padding: 10px 12px;}
+  .filter-controls .filter-chip,.sort-label select {min-height: 44px;}
+  .directory-heading {gap: 10px;}
+  .directory-heading h2 {padding-inline: 10px;}
+  .detail-art.project-artwork {height: auto; aspect-ratio: 16/9;}
+  .detail-rating {padding: 18px 12px;}
+  .panel {padding: 12px;}
+  .description-box {padding: 12px;}
+}
+@media(max-width:350px) {
+  .card-art {height: 145px;}
+}
+@media(forced-colors:active) {
+  .world-scenery {display: none;}
+  .project-card,.panel,.spotlight-inner,.button {border-color: CanvasText;}
+}
+
+.portrait-ornaments {position: absolute; inset: calc(-1 * var(--portrait-border)); pointer-events: none; z-index: 1;}
+.portrait-ornaments>span {position: absolute; background-image: url('../assets/buus-fury-portrait-ornaments.png'); background-size: calc(64px * var(--portrait-scale)) calc(64px * var(--portrait-scale)); background-repeat: no-repeat; image-rendering: pixelated;}
+.portrait-top,.portrait-bottom {width: calc(40px * var(--portrait-scale)); height: calc(8px * var(--portrait-scale)); left: 50%; transform: translateX(-50%);}
+.portrait-top {top: 0; background-position: calc(-12px * var(--portrait-scale)) 0;}
+.portrait-bottom {bottom: 0; background-position: calc(-12px * var(--portrait-scale)) calc(-56px * var(--portrait-scale));}
+.portrait-left,.portrait-right {width: calc(8px * var(--portrait-scale)); height: calc(40px * var(--portrait-scale)); top: 50%; transform: translateY(-50%);}
+.portrait-left {left: 0; background-position: 0 calc(-12px * var(--portrait-scale));}
+.portrait-right {right: 0; background-position: calc(-56px * var(--portrait-scale)) calc(-12px * var(--portrait-scale));}

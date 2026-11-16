@@ -1,0 +1,11 @@
+name: Content moderation instructions
+on:
+  workflow_dispatch: null
+permissions:
+  contents: read
+jobs:
+  instructions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: echo 'Use docs/moderation.md. Review artwork locally; merge exact hashes through a protected policy PR. This workflow grants no approvals and uploads no artwork.'

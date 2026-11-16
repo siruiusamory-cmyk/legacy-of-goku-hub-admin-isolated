@@ -1,0 +1,9 @@
+---
+import kame from '../assets/log1-kame-house.png';
+import house from '../assets/log2-gokus-house.png';
+import snake from '../assets/buus-fury-snake-way.png';
+const {game} = Astro.props;
+const scenes={'legacy-of-goku':kame,'legacy-of-goku-2':house,'buus-fury':snake};
+const scene=Object.hasOwn(scenes,game)?scenes[game]:null;
+---
+<div class="world-scenery" data-game={scene?game:'neutral'} aria-hidden="true" style={scene?`--scenery-image:url("${scene.src}");--scenery-width:${scene.width}px;--scenery-height:${scene.height}px`:undefined}>{scene && <div class="game-terrain"></div>}</div>

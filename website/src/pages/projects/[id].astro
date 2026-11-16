@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Badges from '../../components/Badges.astro';
+import Rating from '../../components/Rating.astro';
+import RatingSelector from '../../components/RatingSelector.astro';
+import Icon from '../../components/Icon.astro';
+import ProjectArtwork from '../../components/ProjectArtwork.astro';
+import {artwork, catalog, href, rating, formatDate, formatSize, featuredLabel, ratingsAPI, projectActions, hostingLabels, claimLabel, correctionURL, claimURL} from '../../lib/catalog.js';
+export function getStaticPaths() {return catalog.projects.map(project => ({params:{id:project.id},props:{project}}));}
+const {project} = Astro.props;
+const downloadable = project.release && project.availability === 'available';
+const releaseUrl = project.release ? `${project.repository}/releases/tag/${encodeURIComponent(project.release.version)}` : null;
+const actions = projectActions(project);
+const destinations = new Set([...actions.map(a => a.url.replace(/\/$/, '')), releaseUrl, downloadable && project.release?.download_url]);
+const links = (project.links || []).filter(link => {const url = link.url.replace(/\/$/, ''); if (destinations.has(url)) return false; destinations.add(url); return true;});
+---
+<Layout title={`${project.title} | Legacy of Goku Hub`} description={project.description} game={project.game}><main id="main" class="detail-main container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href={href('#directory')}><Icon name="back"/>All Projects</a><span aria-hidden="true">/</span><span aria-current="page">{project.title}</span></nav>
+  <section class="detail-hero" data-category={project.category} aria-labelledby="project-title"><ProjectArtwork framed class="detail-art" src={href(artwork[project.id].src)} width={artwork[project.id].width} height={artwork[project.id].height} alt={`${project.title} project artwork`} loading="eager" fetchpriority="high"/><div class="detail-intro">{project.featured && <span class="featured-label">★ &nbsp; {featuredLabel(project)}</span>}<h1 id="project-title">{project.title}</h1><p class="detail-developer">by {project.developer}</p><Badges project={project}/><div class="hero-actions">{actions.map((a, i) => <a class:list={["button", i === 0 ? "primary" : "secondary"]} href={a.url} rel="noopener noreferrer"><Icon name={a.icon}/>{a.label}</a>)}</div></div>
+  </section>
+  {project.availability !== 'available' && <p class="availability-note" role="note">{project.archived ? 'This repository is archived.' : 'This project is temporarily unavailable.'} Saved metadata is shown; downloads are unavailable.</p>}
+  {project.distribution && <p class="availability-note external-note" role="note">Links lead to sites run by other people. Hub moderators review each link, but files are not hosted or scanned here. No game ROMs are provided.</p>}
+  <section class="detail-rating panel" aria-label="Community ratings"><div class="community-rating"><h2 class="panel-title">Community Rating</h2><Rating {...rating(project)} projectId={project.id} ballsOnly={!!ratingsAPI}/></div><RatingSelector projectId={project.id}/></section>
+  <div class="detail-columns"><div class="detail-content"><section class="panel about" aria-labelledby="about-title"><h2 class="panel-title" id="about-title">About</h2><p class="description-box">{project.description}</p></section>
+  {project.screenshots.length > 0 && <section class="panel gallery-panel" aria-labelledby="screenshots-title"><h2 class="panel-title" id="screenshots-title">Screenshots</h2><div class="screenshot-gallery">{project.screenshots.map((image,i)=><a href={href(image)} aria-label={`Open ${project.title} screenshot ${i+1}`}><img src={href(image)} alt={`${project.title} screenshot ${i+1}`} width="480" height="320" loading="lazy" decoding="async"/></a>)}</div></section>}
+  </div><aside class="panel project-information"><h2 class="panel-title">Project Details</h2><dl>{project.release && <><div><dt>Version</dt><dd><a href={releaseUrl} rel="noopener noreferrer">{project.release.version}</a></dd></div><div><dt>File Size</dt><dd>{formatSize(project.release.file_size)}</dd></div><div><dt>Release Date</dt><dd><time datetime={project.release.release_date}>{formatDate(project.release.release_date)}</time></dd></div></>}<div><dt>Last updated</dt><dd><time datetime={project.last_updated}>{formatDate(project.last_updated)}</time></dd></div>{project.source && <div><dt>Listed from</dt><dd>{hostingLabels[project.source.type]}</dd></div>}{project.ownership && <div><dt>Representation</dt><dd>{project.ownership.representation_verified ? 'Team representation verified' : claimLabel(project)}</dd></div>}</dl>
+  <p class="detail-feedback"><a href={correctionURL(project)}>Suggest a correction</a>{project.ownership?.claim !== 'verified-claim' && <> &middot; <a href={claimURL(project)}>This is my project</a></>}</p>
+  {links.length > 0 && <section class="approved-links" aria-labelledby="links-title"><h2 class="panel-title" id="links-title">Additional Links</h2><ul>{links.map(link=><li><a href={link.url} rel="noopener noreferrer">{link.label}<Icon name="external" size={17}/></a></li>)}</ul></section>}
+  {project.release?.sha256 && <details class="checksum"><summary>SHA-256 checksum</summary><code>{project.release.sha256}</code></details>}
+  </aside></div>
+</main></Layout>

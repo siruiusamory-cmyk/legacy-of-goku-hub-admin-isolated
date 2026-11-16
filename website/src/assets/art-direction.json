@@ -1,0 +1,29 @@
+{
+  "gh-1432341427": {
+    "source_sha256": "c2ec54f55f8b6cc498b57e63a20ce144b289821c484ed28f3be8790b73e30525",
+    "crop": {
+      "left": 6,
+      "top": 0,
+      "width": 312,
+      "height": 149
+    }
+  },
+  "gh-1429374563": {
+    "source_sha256": "a29a07a94f2a2db5c847793e340d0a57f69501e90a68ad72dc95c3e4ed79f73d",
+    "crop": {
+      "left": 5,
+      "top": 0,
+      "width": 314,
+      "height": 159
+    }
+  },
+  "gh-1398951057": {
+    "source_sha256": "d9ff717a7f5bf6c2556972dc5a5fa760a034541e940c3eb2654c0c24b7a19e2c",
+    "crop": {
+      "left": 6,
+      "top": 0,
+      "width": 312,
+      "height": 136
+    }
+  }
+}

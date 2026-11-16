@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "purpose": "real-preview",
+  "projects": [
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/dragonbyte-z",
+      "repository_id": 1429329775,
+      "owner_id": 287528505,
+      "inspected_commit": "fc8752ee08cff43545c25ccd755db561fec6a630",
+      "github_description": "DragonByte Z and the Webfoot SDK: ROM editing tools and documented formats for the Legacy of Goku GBA games.",
+      "metadata": {
+        "schema_version": 1,
+        "title": "DragonByte Z / Webfoot SDK",
+        "developer": "siruiusamory-cmyk",
+        "description": "DragonByte Z and the Webfoot SDK: ROM editing tools and documented formats for the Legacy of Goku GBA games. The repository identifies this as an actively developed, pre-1.0 SDK and authoring initiative for The Legacy of Goku, The Legacy of Goku II and Buu's Fury. The current creator application and the planned next-generation application have distinct scope; development goals are not presented as shipped features. Supply your own supported ROM. No ROM or game data is distributed.",
+        "game": "multiple",
+        "category": "tool",
+        "status": "in-development",
+        "screenshots": [],
+        "links": [
+          {
+            "label": "Repository README",
+            "url": "https://github.com/siruiusamory-cmyk/dragonbyte-z/blob/master/README.md"
+          },
+          {
+            "label": "Documentation",
+            "url": "https://github.com/siruiusamory-cmyk/dragonbyte-z/blob/master/docs/README.md"
+          }
+        ]
+      }
+    },
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/legacyofgoku-disasm",
+      "repository_id": 1432341427,
+      "owner_id": 287528505,
+      "inspected_commit": "53daea5dce101411f42575d4efda0488273de3fb",
+      "github_description": "Byte-exact disassembly of Dragon Ball Z: The Legacy of Goku (GBA, USA). Code is ARM/Thumb assembly; the rest rebuilds from your own ROM. No game data included.",
+      "metadata": {
+        "schema_version": 1,
+        "title": "Legacy of Goku Disassembly",
+        "developer": "siruiusamory-cmyk",
+        "description": "Byte-exact disassembly of Dragon Ball Z: The Legacy of Goku (GBA, USA). Code is ARM/Thumb assembly; the rest rebuilds from your own ROM. No game data included. This is an assembly reconstruction and development resource, not a playable ROM hack or a recovery of the original C source. Rebuilding requires the owner's own supported retail ROM and the documented toolchain. The README describes remaining reconstruction and readability work; no completion percentage or independently tested runtime claim is asserted here.",
+        "game": "legacy-of-goku",
+        "category": "resource",
+        "status": "in-development",
+        "cover": "docs/banner.png",
+        "screenshots": [],
+        "links": [
+          {
+            "label": "Repository README",
+            "url": "https://github.com/siruiusamory-cmyk/legacyofgoku-disasm/blob/master/README.md"
+          },
+          {
+            "label": "Documentation",
+            "url": "https://github.com/siruiusamory-cmyk/legacyofgoku-disasm/blob/master/docs/README.md"
+          }
+        ]
+      }
+    },
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/legacyofgoku2-disasm",
+      "repository_id": 1429374563,
+      "owner_id": 287528505,
+      "inspected_commit": "55363351468719fff9650cad45d81011da1f9438",
+      "github_description": "Byte-exact disassembly of Dragon Ball Z: The Legacy of Goku II (GBA, USA). Code is ARM/Thumb assembly; assets rebuild from your own ROM. No game data included.",
+      "metadata": {
+        "schema_version": 1,
+        "title": "Legacy of Goku II Disassembly",
+        "developer": "siruiusamory-cmyk",
+        "description": "Byte-exact disassembly of Dragon Ball Z: The Legacy of Goku II (GBA, USA). Code is ARM/Thumb assembly; assets rebuild from your own ROM. No game data included. This is an assembly reconstruction and development resource, not a playable ROM hack or a recovery of the original C source. Rebuilding requires the owner's own supported retail ROM and the documented toolchain. The README describes remaining reconstruction and readability work; no completion percentage or independently tested runtime claim is asserted here.",
+        "game": "legacy-of-goku-2",
+        "category": "resource",
+        "status": "in-development",
+        "cover": "docs/banner.png",
+        "screenshots": [],
+        "links": [
+          {
+            "label": "Repository README",
+            "url": "https://github.com/siruiusamory-cmyk/legacyofgoku2-disasm/blob/master/README.md"
+          },
+          {
+            "label": "Documentation",
+            "url": "https://github.com/siruiusamory-cmyk/legacyofgoku2-disasm/blob/master/docs/README.md"
+          }
+        ]
+      }
+    },
+    {
+      "repository": "https://github.com/siruiusamory-cmyk/buusfury-disasm",
+      "repository_id": 1398951057,
+      "owner_id": 287528505,
+      "inspected_commit": "91d367a9b81de83c80dc8da35f13db6b54696c80",
+      "github_description": "Byte-exact disassembly of Dragon Ball Z: Buu's Fury (GBA, USA). Code is ARM/Thumb assembly; assets rebuild from your own ROM. No game data included.",
+      "metadata": {
+        "schema_version": 1,
+        "title": "Buu's Fury Disassembly",
+        "developer": "siruiusamory-cmyk",
+        "description": "Byte-exact disassembly of Dragon Ball Z: Buu's Fury (GBA, USA). Code is ARM/Thumb assembly; assets rebuild from your own ROM. No game data included. This is an assembly reconstruction and development resource, not a playable ROM hack or a recovery of the original C source. Rebuilding requires the owner's own supported retail ROM and the documented toolchain. The README describes remaining reconstruction and readability work; no completion percentage or independently tested runtime claim is asserted here.",
+        "game": "buus-fury",
+        "category": "resource",
+        "status": "in-development",
+        "cover": "docs/banner.png",
+        "screenshots": [],
+        "links": [
+          {
+            "label": "Repository README",
+            "url": "https://github.com/siruiusamory-cmyk/buusfury-disasm/blob/master/README.md"
+          },
+          {
+            "label": "Documentation",
+            "url": "https://github.com/siruiusamory-cmyk/buusfury-disasm/blob/master/docs/README.md"
+          }
+        ]
+      }
+    }
+  ]
+}
